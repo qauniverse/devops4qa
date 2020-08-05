@@ -1,0 +1,23 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: qa-webapp-deployment
+  labels:
+    app: qau-webapp
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: qau-webapp
+  template:
+    metadata:
+      labels:
+        app: qau-webapp
+    spec:
+      containers:
+      - name: webapp
+        image: qau-webapp:latest
+        imagePullPolicy: Never
+        ports:
+        - containerPort: 5000
